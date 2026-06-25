@@ -724,6 +724,35 @@
     line-height: 1.25;
   }
   .video-inner h2 em { font-style: italic; color: var(--orange); }
+  /* Capa que cubre la barra superior de YouTube */
+  .video-overlay-top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 52px;
+    background: #0F0505;
+    z-index: 10;
+    pointer-events: none;
+    border-radius: 20px 20px 0 0;
+  }
+  /* Capa que cubre el logo inferior derecho de YouTube */
+  .video-overlay-bottom {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 140px;
+    height: 40px;
+    background: #0F0505;
+    z-index: 10;
+    pointer-events: none;
+    border-radius: 0 0 20px 0;
+  }
+  /* Cuando el video está parado también cubrimos centrado */
+  .video-overlay-center {
+    position: absolute;
+    inset: 0;
+    z-index: 9;
+    pointer-events: none;
+  }
+
   /* Custom video player — sin UI de YouTube */
   .video-wrap {
     position: relative;
@@ -978,10 +1007,13 @@
       <div class="video-duration">1:56</div>
       <!-- iframe carga solo al hacer clic -->
       <iframe id="videoIframe"
-              data-src="https://www.youtube.com/embed/TSISdheL8D8?rel=0&modestbranding=1&controls=1&autoplay=1"
+              data-src="https://www.youtube.com/embed/TSISdheL8D8?rel=0&modestbranding=1&controls=1&autoplay=1&showinfo=0&iv_load_policy=3&cc_load_policy=0&disablekb=1"
               title="Cómo Recuperar y Fortalecer tu Matrimonio — Andres Arango"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen></iframe>
+      <!-- Capas que cubren el branding de YouTube -->
+      <div class="video-overlay-top"></div>
+      <div class="video-overlay-bottom"></div>
     </div>
     <p class="video-cta">👆 Este video explica exactamente por qué tu matrimonio puede recuperarse — sin importar cuánto tiempo lleve la crisis.</p>
   </div>
