@@ -724,19 +724,109 @@
     line-height: 1.25;
   }
   .video-inner h2 em { font-style: italic; color: var(--orange); }
+  /* Custom video player — sin UI de YouTube */
   .video-wrap {
     position: relative;
     padding-bottom: 56.25%;
     height: 0;
-    border-radius: 16px;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 0 2px rgba(232,98,26,0.3);
+    box-shadow:
+      0 0 0 1px rgba(232,98,26,0.25),
+      0 8px 32px rgba(0,0,0,0.4),
+      0 32px 80px rgba(0,0,0,0.5);
+    cursor: pointer;
+    background: #0a0a0a;
   }
   .video-wrap iframe {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
     border: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .video-wrap iframe.loaded { opacity: 1; }
+  .video-thumb {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://img.youtube.com/vi/TSISdheL8D8/maxresdefault.jpg');
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.4s ease;
+    z-index: 2;
+  }
+  .video-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(15,5,5,0.3) 0%, rgba(139,26,26,0.2) 100%);
+  }
+  .video-wrap:hover .video-thumb { transform: scale(1.02); }
+  .video-wrap.playing .video-thumb { display: none; }
+  .video-wrap.playing .play-btn { display: none; }
+  .video-wrap.playing iframe { opacity: 1; }
+
+  /* Botón de play personalizado */
+  .play-btn {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    pointer-events: none;
+  }
+  .play-circle {
+    width: 80px; height: 80px;
+    background: linear-gradient(135deg, var(--orange), #C0440A);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 32px rgba(232,98,26,0.6), 0 0 0 8px rgba(232,98,26,0.15);
+    animation: play-pulse 2s ease-in-out infinite;
+    transition: transform 0.2s ease;
+  }
+  .video-wrap:hover .play-circle {
+    transform: scale(1.1);
+    box-shadow: 0 12px 48px rgba(232,98,26,0.8), 0 0 0 12px rgba(232,98,26,0.2);
+  }
+  .play-circle svg {
+    width: 32px; height: 32px;
+    fill: #fff;
+    margin-left: 4px;
+  }
+  @keyframes play-pulse {
+    0%, 100% { box-shadow: 0 8px 32px rgba(232,98,26,0.6), 0 0 0 8px rgba(232,98,26,0.15); }
+    50% { box-shadow: 0 8px 40px rgba(232,98,26,0.8), 0 0 0 16px rgba(232,98,26,0.08); }
+  }
+  .play-label {
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 50px;
+    white-space: nowrap;
+  }
+  /* Duración badge */
+  .video-duration {
+    position: absolute;
+    bottom: 16px; right: 16px;
+    z-index: 3;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.04em;
   }
   .video-cta {
     margin-top: 28px;
@@ -874,11 +964,24 @@
   <div class="video-inner">
     <span class="sec-label">Mensaje de Andres Arango</span>
     <h2>Antes de seguir, mira este video.<br><em>Podría cambiar tu matrimonio para siempre.</em></h2>
-    <div class="video-wrap">
-      <iframe src="https://www.youtube.com/embed/TSISdheL8D8?rel=0&modestbranding=1"
+    <div class="video-wrap" id="videoPlayer" onclick="playVideo()">
+      <!-- Thumbnail personalizado -->
+      <div class="video-thumb"></div>
+      <!-- Botón de play propio -->
+      <div class="play-btn">
+        <div class="play-circle">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <span class="play-label">▶ Ver mensaje del Pastor Andres</span>
+      </div>
+      <!-- Duración -->
+      <div class="video-duration">1:56</div>
+      <!-- iframe carga solo al hacer clic -->
+      <iframe id="videoIframe"
+              data-src="https://www.youtube.com/embed/TSISdheL8D8?rel=0&modestbranding=1&controls=1&autoplay=1"
               title="Cómo Recuperar y Fortalecer tu Matrimonio — Andres Arango"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen loading="lazy"></iframe>
+              allowfullscreen></iframe>
     </div>
     <p class="video-cta">👆 Este video explica exactamente por qué tu matrimonio puede recuperarse — sin importar cuánto tiempo lleve la crisis.</p>
   </div>
@@ -1233,6 +1336,16 @@
 </div>
 
 <script>
+  // VIDEO PLAYER PERSONALIZADO
+  function playVideo() {
+    const player = document.getElementById('videoPlayer');
+    const iframe = document.getElementById('videoIframe');
+    if (player.classList.contains('playing')) return;
+    iframe.src = iframe.getAttribute('data-src');
+    player.classList.add('playing');
+    iframe.addEventListener('load', () => iframe.classList.add('loaded'));
+  }
+
   // COUNTDOWN — 24 horas desde la primera visita
   function initCountdown() {
     const key = 'matrimonio_cd_end';
