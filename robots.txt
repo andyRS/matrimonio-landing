@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://restauratumatrimonio.org/sitemap.xml
