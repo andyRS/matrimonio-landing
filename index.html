@@ -1503,19 +1503,23 @@
     iframe.addEventListener('load', () => iframe.classList.add('loaded'));
   }
 
-  // COUNTDOWN — 24 horas desde la primera visita
+  // COUNTDOWN — Timer fijo que nunca expira, siempre corre desde 23:59:59
   function initCountdown() {
-    const key = 'matrimonio_cd_end';
-    let end = localStorage.getItem(key);
-    if (!end) {
-      end = Date.now() + 24 * 60 * 60 * 1000;
-      localStorage.setItem(key, end);
-    }
+    // Calculamos segundos desde medianoche para que cada visitante
+    // vea un número diferente pero siempre entre 1h y 23h — nunca 0
+    const now = new Date();
+    const secondsToday = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+    // Invertimos: si son las 10:00am (36000s), mostramos 23:59:59 - 36000 = 13:59:59
+    // Garantizamos mínimo 1 hora visible
+    const MIN_SECONDS = 3600; // 1 hora mínima
+    let remaining = (86399 - secondsToday);
+    if (remaining < MIN_SECONDS) remaining += MIN_SECONDS;
+
     function update() {
-      const diff = Math.max(0, end - Date.now());
-      const h = Math.floor(diff / 3600000);
-      const m = Math.floor((diff % 3600000) / 60000);
-      const s = Math.floor((diff % 60000) / 1000);
+      remaining = remaining > 0 ? remaining - 1 : 86399;
+      const h = Math.floor(remaining / 3600);
+      const m = Math.floor((remaining % 3600) / 60);
+      const s = remaining % 60;
       document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
       document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
       document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
