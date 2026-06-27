@@ -758,21 +758,114 @@
     text-align: center; text-decoration: none;
   }
 
+  /* ═══════════════════════════════════
+     RESPONSIVE — TABLET (max 768px)
+  ═══════════════════════════════════ */
   @media (max-width: 768px) {
-    .hero-inner { grid-template-columns: 1fr; text-align: center; }
+
+    /* SECCIONES */
+    .section { padding: 52px 16px; }
+
+    /* COUNTDOWN */
+    .countdown-bar { padding: 10px 12px; }
+    .countdown-bar p { font-size: 0.75rem; }
+    .countdown-digits { gap: 6px; }
+    .cd-block { min-width: 44px; padding: 4px 8px; }
+    .cd-block .num { font-size: 1.2rem; }
+
+    /* HERO */
+    .hero { padding: 40px 16px 0; }
+    .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 24px; }
     .hero-text { padding-bottom: 0; }
-    .hero-img { margin-top: -20px; }
+    .hero-img { margin-top: 0; }
+    .hero-img img { max-width: 100%; }
+    .hero h1 { font-size: clamp(1.8rem, 6vw, 2.4rem); }
+    .hero-desc { font-size: 0.95rem; }
     .pain-list li { justify-content: flex-start; text-align: left; }
-    .trust-row { justify-content: center; }
-    .pain-grid { grid-template-columns: 1fr; }
-    .solution-inner { grid-template-columns: 1fr; text-align: center; }
-    .solution-text .sec-title, .solution-text .sec-sub, .solution-text .sec-label { text-align: center; }
-    .ebooks-grid { grid-template-columns: 1fr 1fr; }
-    .author-inner { grid-template-columns: 1fr; text-align: center; }
-    .author-photo { width: 160px; height: 200px; margin: 0 auto; }
+    .trust-row { justify-content: center; flex-wrap: wrap; gap: 6px; font-size: 0.75rem; }
+    .cta-btn { font-size: 0.95rem; padding: 16px 28px; }
+
+    /* PROOF BAR */
+    .proof-bar { gap: 12px; padding: 14px 16px; }
+    .proof-item { font-size: 0.78rem; }
+    .proof-item span { font-size: 1rem; }
+
+    /* DOLOR */
+    .pain-grid { grid-template-columns: 1fr; gap: 12px; }
+    .pain-card { padding: 20px 16px; }
+
+    /* SOLUCIÓN */
+    .solution-inner { grid-template-columns: 1fr; text-align: center; gap: 32px; }
+    .solution-text .sec-title,
+    .solution-text .sec-sub,
+    .solution-text .sec-label { text-align: center; }
+    .solution-img img { max-width: 100%; }
+
+    /* BONOS — 1 columna en móvil pequeño, 2 en tablet */
+    .ebooks-grid { grid-template-columns: 1fr 1fr !important; gap: 24px; }
+    .ebook-card { padding: 28px 16px 20px; }
+    .ebook-card .img-wrap { width: 120px; height: 150px; }
+
+    /* VALOR TOTAL */
+    .valor-total { flex-wrap: wrap; gap: 6px; font-size: 0.78rem; }
+    .valor-total .linea { display: none; }
+
+    /* AUTOR */
+    .author-inner { grid-template-columns: 1fr; text-align: center; gap: 24px; }
+    .author-photos-col { flex-direction: row; justify-content: center; gap: 12px; }
+    .author-photo-main { width: 140px; height: 180px; }
+    .author-photo-stage { width: 140px; height: 100px; }
+
+    /* TESTIMONIOS VIDEO */
+    .testim-videos { grid-template-columns: 1fr 1fr; gap: 10px; }
     .testim-grid { grid-template-columns: 1fr; }
+
+    /* FAQ */
+    .faq-q { font-size: 0.95rem; padding: 16px; }
+
+    /* STICKY */
     .sticky { display: block; }
-    .proof-bar { gap: 20px; }
+    .sticky a { font-size: 0.88rem; padding: 12px; }
+  }
+
+  /* ═══════════════════════════════════
+     RESPONSIVE — MÓVIL PEQUEÑO (max 480px)
+  ═══════════════════════════════════ */
+  @media (max-width: 480px) {
+    /* BONOS — 1 columna en pantalla muy pequeña */
+    .ebooks-grid { grid-template-columns: 1fr !important; max-width: 320px; margin: 0 auto; }
+
+    /* TESTIMONIOS VIDEO — 1 columna */
+    .testim-videos { grid-template-columns: 1fr; }
+
+    /* AUTOR FOTOS — columna */
+    .author-photos-col { flex-direction: column; align-items: center; }
+    .author-photo-main { width: 200px; height: 240px; }
+    .author-photo-stage { width: 200px; height: 120px; }
+
+    /* PROOF BAR — 2x2 */
+    .proof-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    /* RESUMEN VALOR */
+    .resumen-item { flex-direction: column; gap: 4px; }
+
+    /* COUNTDOWN — más compacto */
+    .countdown-bar p { font-size: 0.7rem; }
+    .cd-block .num { font-size: 1rem; }
+    .cd-block .lbl { font-size: 0.55rem; }
+
+    /* CTA BUTTONS */
+    .cta-btn, .cta-btn-lg { 
+      display: block; 
+      width: 100%; 
+      text-align: center;
+      padding: 16px 20px;
+      font-size: 0.95rem;
+    }
+
+    /* HERO */
+    .hero { padding: 32px 12px 0; }
+    .badge { font-size: 0.68rem; padding: 5px 12px; }
   }
 
   /* ── COUNTDOWN ── */
@@ -1043,12 +1136,7 @@
     width: 100%; height: 100%;
     border: 0;
   }
-  @media (max-width: 768px) {
-    .testim-videos { grid-template-columns: 1fr 1fr; }
-    .countdown-digits { gap: 6px; }
-    .cd-block { min-width: 44px; padding: 4px 8px; }
-    .cd-block .num { font-size: 1.2rem; }
-  }
+
 
 
   /* PERFORMANCE — reducir animaciones en conexiones lentas */
