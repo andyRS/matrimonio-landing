@@ -816,6 +816,18 @@
     .author-photo-main { width: 140px; height: 180px; }
     .author-photo-stage { width: 140px; height: 100px; }
 
+    /* VIDEO PRINCIPAL */
+    .video-section { padding: 40px 16px; }
+    .video-inner h2 { font-size: clamp(1.3rem, 4.5vw, 1.8rem); margin-bottom: 20px; }
+    .video-wrap { border-radius: 12px; }
+    .video-overlay-top { height: 44px; border-radius: 12px 12px 0 0; }
+    .video-overlay-bottom { width: 100px; height: 36px; border-radius: 0 0 12px 0; }
+    .play-circle { width: 60px; height: 60px; }
+    .play-circle svg { width: 24px; height: 24px; }
+    .play-label { font-size: 0.72rem; padding: 5px 14px; }
+    .video-duration { font-size: 0.7rem; bottom: 10px; right: 10px; }
+    .video-cta { font-size: 0.82rem; margin-top: 16px; }
+
     /* TESTIMONIOS VIDEO */
     .testim-videos { grid-template-columns: 1fr 1fr; gap: 10px; }
     .testim-grid { grid-template-columns: 1fr; }
@@ -834,6 +846,16 @@
   @media (max-width: 480px) {
     /* BONOS — 1 columna en pantalla muy pequeña */
     .ebooks-grid { grid-template-columns: 1fr !important; max-width: 320px; margin: 0 auto; }
+
+    /* VIDEO — pantalla muy pequeña */
+    .video-section { padding: 32px 12px; }
+    .video-inner h2 { font-size: 1.2rem; }
+    .video-wrap { border-radius: 10px; }
+    .video-overlay-top { height: 40px; border-radius: 10px 10px 0 0; }
+    .video-overlay-bottom { width: 80px; height: 32px; }
+    .play-circle { width: 52px; height: 52px; }
+    .play-circle svg { width: 20px; height: 20px; }
+    .play-label { display: none; }
 
     /* TESTIMONIOS VIDEO — 1 columna */
     .testim-videos { grid-template-columns: 1fr; }
