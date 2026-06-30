@@ -838,6 +838,23 @@
     /* STICKY */
     .sticky { display: block; }
     .sticky a { font-size: 0.88rem; padding: 12px; }
+
+    /* AUTHORITY BANNER — texto cortado en móvil */
+    .authority-banner { min-height: auto !important; padding: 48px 0 !important; }
+    .authority-banner .authority-overlay { background: linear-gradient(180deg, rgba(15,5,5,0.55) 0%, rgba(15,5,5,0.92) 55%, rgba(15,5,5,0.97) 100%) !important; }
+    .authority-banner .authority-inner { padding: 0 20px !important; max-width: 100% !important; }
+    .authority-banner h2, .authority-banner p { max-width: 100% !important; }
+    .authority-stats { gap: 20px !important; justify-content: center; }
+
+    /* CREDENCIALES AUTOR — evita que se peguen al borde */
+    .credentials-row { gap: 14px !important; justify-content: center; }
+
+    /* VIDEO OVERLAY — cubrir mejor el logo de YouTube en móvil */
+    .video-overlay-bottom { width: 100px !important; height: 44px !important; }
+
+    /* TABLA RESUMEN DE VALOR — evitar solape de precios */
+    .resumen-total-row { flex-direction: column; align-items: flex-start !important; gap: 4px; }
+    .resumen-precio-row { flex-direction: column; align-items: flex-start !important; gap: 4px; }
   }
 
   /* ═══════════════════════════════════
@@ -1395,7 +1412,7 @@
       <br>
       <p>Su enfoque único combina la psicología clínica con los principios espirituales, abordando el matrimonio en su totalidad: <strong>mente, corazón y espíritu.</strong> Por eso su método funciona donde la terapia convencional no llega.</p>
       <br>
-      <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:4px;">
+      <div class="credentials-row" style="display:flex;gap:20px;flex-wrap:wrap;margin-top:4px;">
         <div style="display:flex;align-items:center;gap:8px;font-size:0.88rem;color:var(--gray);">
           <span style="font-size:1.2rem;">🎓</span> Psicólogo Clínico Certificado
         </div>
@@ -1411,14 +1428,14 @@
 </section>
 
 <!-- AUTHORITY BANNER — foto en escenario -->
-<section style="position:relative; overflow:hidden; min-height:420px; display:flex; align-items:center;">
+<section class="authority-banner" style="position:relative; overflow:hidden; min-height:420px; display:flex; align-items:center;">
   <div style="position:absolute;inset:0;">
     <img loading="lazy" src="https://lh3.googleusercontent.com/d/10XUgoFi1QdIsEdloTeX8sQ5P-8Hb2ela"
          alt="Andres Arango en conferencia"
          style="width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(0.35);">
   </div>
-  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,5,5,0.92) 40%,rgba(15,5,5,0.3) 100%);"></div>
-  <div style="position:relative;z-index:1;max-width:960px;margin:0 auto;padding:60px 20px;">
+  <div class="authority-overlay" style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,5,5,0.92) 40%,rgba(15,5,5,0.3) 100%);"></div>
+  <div class="authority-inner" style="position:relative;z-index:1;max-width:960px;margin:0 auto;padding:60px 20px;">
     <span style="display:block;font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">Autoridad comprobada</span>
     <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;color:#FFF8F0;line-height:1.2;max-width:600px;margin-bottom:20px;">
       Más de <span style="color:var(--orange);">20 años</span> restaurando matrimonios en crisis
@@ -1426,7 +1443,7 @@
     <p style="color:#C4A8A0;font-size:1rem;line-height:1.75;max-width:520px;margin-bottom:32px;">
       El Pastor Andres Arango ha impartido conferencias para miles de parejas en toda Latinoamérica. Su método combina psicología clínica y principios espirituales para sanar heridas profundas y reconstruir relaciones desde la raíz.
     </p>
-    <div style="display:flex;gap:32px;flex-wrap:wrap;">
+    <div class="authority-stats" style="display:flex;gap:32px;flex-wrap:wrap;">
       <div style="text-align:center;">
         <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--gold);">+20</div>
         <div style="color:#9A7D78;font-size:0.82rem;">Años de experiencia</div>
@@ -1554,11 +1571,11 @@
           <span style="text-decoration:line-through;color:#9A7D78;white-space:nowrap;margin-left:12px;">$47</span>
         </div>
       </div>
-      <div style="border-top:2px solid #EDD8D0;margin-top:20px;padding-top:20px;display:flex;justify-content:space-between;align-items:center;">
+      <div class="resumen-total-row" style="border-top:2px solid #EDD8D0;margin-top:20px;padding-top:20px;display:flex;justify-content:space-between;align-items:center;">
         <span style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:var(--dark);">TOTAL VALOR REAL</span>
         <span style="text-decoration:line-through;color:#9A7D78;font-size:1.1rem;">$589 USD</span>
       </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;">
+      <div class="resumen-precio-row" style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;">
         <span style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--crimson);">TU PRECIO HOY</span>
         <span style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--gold);">$149 USD</span>
       </div>
