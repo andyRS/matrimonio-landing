@@ -829,7 +829,7 @@
     .video-cta { font-size: 0.82rem; margin-top: 16px; }
 
     /* TESTIMONIOS VIDEO */
-    .testim-videos { grid-template-columns: 1fr; gap: 16px; max-width: 420px; margin-left: auto; margin-right: auto; }
+    .testim-videos { grid-template-columns: 1fr !important; gap: 16px; max-width: 420px; margin-left: auto; margin-right: auto; }
     .testim-grid { grid-template-columns: 1fr; }
 
     /* FAQ */
@@ -838,6 +838,9 @@
     /* STICKY */
     .sticky { display: block; }
     .sticky a { font-size: 0.88rem; padding: 12px; }
+
+    /* FOOTER — espacio extra para que el sticky CTA no tape el texto */
+    footer { padding-bottom: 100px !important; }
 
     /* AUTHORITY BANNER — texto cortado en móvil */
     .authority-banner { min-height: auto !important; padding: 48px 0 !important; }
@@ -877,7 +880,7 @@
     .play-label { display: none; }
 
     /* TESTIMONIOS VIDEO — 1 columna */
-    .testim-videos { grid-template-columns: 1fr; }
+    .testim-videos { grid-template-columns: 1fr !important; }
 
     /* AUTOR FOTOS — columna */
     .author-photos-col { flex-direction: column; align-items: center; }
