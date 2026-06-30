@@ -735,11 +735,11 @@
     background: #080202;
     padding: 30px 20px;
     text-align: center;
-    color: #4A2A2A;
+    color: #9A7D78;
     font-size: 0.78rem;
     line-height: 1.9;
   }
-  footer a { color: #7A4A4A; text-decoration: none; }
+  footer a { color: var(--orange); text-decoration: none; }
 
   /* ── STICKY MOBILE ── */
   .sticky {
@@ -842,8 +842,9 @@
     /* AUTHORITY BANNER — texto cortado en móvil */
     .authority-banner { min-height: auto !important; padding: 48px 0 !important; }
     .authority-banner .authority-overlay { background: linear-gradient(180deg, rgba(15,5,5,0.55) 0%, rgba(15,5,5,0.92) 55%, rgba(15,5,5,0.97) 100%) !important; }
-    .authority-banner .authority-inner { padding: 0 20px !important; max-width: 100% !important; }
-    .authority-banner h2, .authority-banner p { max-width: 100% !important; }
+    .authority-banner .authority-inner { padding: 0 20px !important; max-width: 100% !important; text-align: center !important; }
+    .authority-banner h2, .authority-banner p { max-width: 100% !important; text-align: center !important; }
+    .authority-banner span[style*="uppercase"] { text-align: center !important; }
     .authority-stats { gap: 20px !important; justify-content: center; }
 
     /* CREDENCIALES AUTOR — evita que se peguen al borde */
@@ -854,8 +855,8 @@
     .video-thumb { background-size: contain !important; background-color: #0a0a0a; background-repeat: no-repeat; }
 
     /* TABLA RESUMEN DE VALOR — evitar solape de precios */
-    .resumen-total-row { flex-direction: column; align-items: flex-start !important; gap: 4px; }
-    .resumen-precio-row { flex-direction: column; align-items: flex-start !important; gap: 4px; }
+    .resumen-total-row { flex-direction: column; align-items: center !important; text-align: center; gap: 4px; }
+    .resumen-precio-row { flex-direction: column; align-items: center !important; text-align: center; gap: 4px; }
   }
 
   /* ═══════════════════════════════════
