@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1792476815276272');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cómo Recuperar y Fortalecer tu Matrimonio | Andres Arango — Curso Online</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- SEO BÁSICO -->
 <meta name="description" content="¿Tu matrimonio está en crisis? Descubre el método del Pastor Andres Arango — psicólogo clínico con 20+ años — para recuperar y fortalecer tu relación. Acceso inmediato. Garantía 7 días.">
@@ -1696,6 +1711,22 @@
   const sticky = document.getElementById('stickyCta');
   window.addEventListener('scroll', () => {
     sticky.style.display = window.scrollY > 500 ? 'block' : 'none';
+  });
+
+  // META PIXEL — InitiateCheckout al hacer clic en cualquier botón que lleve
+  // al checkout de Hotmart. El Purchase real lo dispara Hotmart directo hacia
+  // Meta (conectado en su panel), esto solo captura la intención de compra
+  // para que las campañas puedan optimizar hacia gente que sí llegó al botón.
+  document.querySelectorAll('a[href*="go.hotmart.com"]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      if (typeof fbq === 'function') {
+        fbq('track', 'InitiateCheckout', {
+          content_name: 'Curso Restaura Tu Matrimonio',
+          value: 149,
+          currency: 'USD',
+        });
+      }
+    });
   });
 </script>
 </body>
