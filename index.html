@@ -1199,7 +1199,7 @@
 
 <!-- COUNTDOWN BAR -->
 <div class="countdown-bar">
-  <p>🔥 <span>OFERTA ESPECIAL POR TIEMPO LIMITADO</span> — El precio de $149 USD puede cambiar en cualquier momento</p>
+  <p>🔥 <span>OFERTA ESPECIAL POR TIEMPO LIMITADO</span> — Esta ventana de acceso preferente es por tiempo limitado</p>
   <div class="countdown-digits">
     <div class="cd-block"><span class="num" id="cd-h">00</span><span class="lbl">Horas</span></div>
     <span class="cd-sep">:</span>
@@ -1635,29 +1635,48 @@
     iframe.addEventListener('load', () => iframe.classList.add('loaded'));
   }
 
-  // COUNTDOWN — Timer fijo que nunca expira, siempre corre desde 23:59:59
+  // COUNTDOWN — ventana personal REAL de 48h por visitante.
+  // Arranca en la primera visita (guardado en localStorage) y cuenta
+  // hacia cero de verdad. Si expira, el banner se oculta por completo --
+  // nunca se reinicia ni finge que todavía queda tiempo.
   function initCountdown() {
-    // Calculamos segundos desde medianoche para que cada visitante
-    // vea un número diferente pero siempre entre 1h y 23h — nunca 0
-    const now = new Date();
-    const secondsToday = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
-    // Invertimos: si son las 10:00am (36000s), mostramos 23:59:59 - 36000 = 13:59:59
-    // Garantizamos mínimo 1 hora visible
-    const MIN_SECONDS = 3600; // 1 hora mínima
-    let remaining = (86399 - secondsToday);
-    if (remaining < MIN_SECONDS) remaining += MIN_SECONDS;
+    const STORAGE_KEY = 'rtm_offer_deadline';
+    const WINDOW_MS = 48 * 60 * 60 * 1000; // 48 horas reales
+    const bar = document.querySelector('.countdown-bar');
+    if (!bar) return;
 
+    let deadline;
+    try {
+      const stored = parseInt(localStorage.getItem(STORAGE_KEY), 10);
+      if (stored && !isNaN(stored)) {
+        deadline = stored;
+      } else {
+        deadline = Date.now() + WINDOW_MS;
+        localStorage.setItem(STORAGE_KEY, String(deadline));
+      }
+    } catch (e) {
+      // localStorage bloqueado (modo privado estricto) -- deadline solo para esta vista
+      deadline = Date.now() + WINDOW_MS;
+    }
+
+    let timer;
     function update() {
-      remaining = remaining > 0 ? remaining - 1 : 86399;
-      const h = Math.floor(remaining / 3600);
-      const m = Math.floor((remaining % 3600) / 60);
-      const s = remaining % 60;
+      const remainingMs = deadline - Date.now();
+      if (remainingMs <= 0) {
+        bar.style.display = 'none';
+        if (timer) clearInterval(timer);
+        return;
+      }
+      const totalSeconds = Math.floor(remainingMs / 1000);
+      const h = Math.floor(totalSeconds / 3600);
+      const m = Math.floor((totalSeconds % 3600) / 60);
+      const s = totalSeconds % 60;
       document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
       document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
       document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
     }
     update();
-    setInterval(update, 1000);
+    timer = setInterval(update, 1000);
   }
   initCountdown();
 
