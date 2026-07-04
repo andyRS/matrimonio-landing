@@ -12,6 +12,16 @@ CNAME             # Dominio custom para GitHub Pages
 sitemap.xml, robots.txt
 ```
 
+## Imágenes (Cloudflare R2)
+
+Las imágenes del sitio (mockup del curso, ebooks/bonos, fotos del autor, banner de autoridad) se sirven desde Cloudflare R2, no desde Google Drive (Drive puede cortar el hotlinking sin aviso).
+
+- **Bucket**: `landingassets` (cuenta Cloudflare, prefijo `r2-upload/`)
+- **Acceso público**: Public Development URL — `https://pub-6b628a581f5c4279a17754da05badef4.r2.dev`
+- Para subir una imagen nueva: R2 dashboard → bucket `landingassets` → carpeta `r2-upload/` → Upload, y referenciarla en `index.html` como `https://pub-6b628a581f5c4279a17754da05badef4.r2.dev/r2-upload/nombre-archivo.ext`
+
+Nota: la Public Development URL no tiene SLA garantizado por Cloudflare para producción a largo plazo. Si más adelante el DNS de `restauratumatrimonio.org` se mueve a Cloudflare, se recomienda migrar a un dominio custom (ej. `img.restauratumatrimonio.org`) vía R2 → Settings → Custom Domains, para mayor confiabilidad.
+
 ## Cómo configurar Meta Pixel / GA4
 
 Toda la configuración de tracking vive en un solo bloque, al inicio del `<head>` de `index.html`:
