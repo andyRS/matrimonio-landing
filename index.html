@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- Meta Pixel Code -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- CONFIGURACIÓN DE TRACKING — ver README.md para instrucciones -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1792476815276272');
-fbq('track', 'PageView');
+  window.RTM_CONFIG = {
+    META_PIXEL_ID: '1792476815276272',
+    GA4_MEASUREMENT_ID: '', // Ej: 'G-XXXXXXXXXX'. Vacío = GA4 desactivado, no falla.
+    LEAD_MAGNET_ENDPOINT: '' // Ej: 'https://formspree.io/f/xxxxxxx'. Vacío = formulario no envía, no falla.
+  };
 </script>
+<script defer src="./analytics.js"></script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
 /></noscript>
-<!-- End Meta Pixel Code -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cómo Recuperar y Fortalecer tu Matrimonio | Andres Arango — Curso Online</title>
+
+<title>Recupera tu Matrimonio en Crisis | Curso Andres Arango</title>
 
 <!-- SEO BÁSICO -->
-<meta name="description" content="¿Tu matrimonio está en crisis? Descubre el método del Pastor Andres Arango — psicólogo clínico con 20+ años — para recuperar y fortalecer tu relación. Acceso inmediato. Garantía 7 días.">
+<meta name="description" content="¿Tu matrimonio está en crisis? El método del Pastor Andres Arango, psicólogo clínico con 20+ años, para recuperar la confianza y el amor. Garantía de 7 días.">
 <meta name="keywords" content="recuperar matrimonio, fortalecer matrimonio, crisis matrimonial, curso matrimonio, Andres Arango, restaurar relación, matrimonio en crisis, cómo salvar mi matrimonio">
 <meta name="author" content="Andres Arango">
 <meta name="robots" content="index, follow">
@@ -66,17 +63,12 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
     "availability": "https://schema.org/InStock",
     "url": "https://go.hotmart.com/D1064872390"
   },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5",
-    "reviewCount": "4800"
-  },
   "inLanguage": "es",
   "url": "https://restauratumatrimonio.org"
 }
 </script>
 
-<!-- SCHEMA.ORG — FAQ -->
+<!-- SCHEMA.ORG — FAQ (debe coincidir exactamente con el FAQ visible en la página) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -92,10 +84,42 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
     },
     {
       "@type": "Question",
-      "name": "¿Puedo hacerlo solo si mi pareja no quiere participar?",
+      "name": "¿Y si mi pareja no quiere participar?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sí. Muchas transformaciones empiezan con uno. Cuando tú cambias, la dinámica de la relación cambia."
+        "text": "Muchas transformaciones empiezan con uno. Cuando tú cambias, la dinámica de la relación cambia — no necesitas que tu pareja participe desde el inicio."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Y si ya intenté de todo y nada funcionó?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Muchas parejas llegan aquí después de terapia, libros o consejos que no dieron resultado. Este programa combina lo espiritual, lo psicológico y lo práctico en un solo sistema paso a paso, diseñado para romper los patrones que un intento aislado no puede cambiar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Y si estamos separados o viviendo aparte?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, puede ayudarte incluso si ya están separados. Muchas herramientas — sanar heridas, entender qué llevó a la crisis, reconstruir la comunicación — se trabajan primero de forma individual, antes de cualquier reencuentro."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Vale la pena invertir $149 en esto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Compáralo con una sola sesión de terapia de pareja, que suele costar $150–$300 y requiere varias sesiones. Aquí tienes acceso de por vida a un sistema completo, con garantía de 7 días: si sientes que no es para ti, te devolvemos el 100%. El riesgo está de nuestro lado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tiempo necesito por semana?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El curso está diseñado para avanzar a tu ritmo. Puedes dedicar 30-45 minutos por semana y ver resultados reales en pocas semanas."
       }
     },
     {
@@ -108,10 +132,10 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
     },
     {
       "@type": "Question",
-      "name": "¿Cuánto tiempo necesito por semana?",
+      "name": "¿Puedo esperar para comprar?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "El curso está diseñado para avanzar a tu ritmo. Puedes dedicar 30-45 minutos por semana y ver resultados reales en pocas semanas."
+        "text": "Puedes tomarte el tiempo que necesites. Lo único que cambia con el tiempo no es el precio — es cuánto más tiempo pasa tu matrimonio sin las herramientas que necesita. Si sientes que es el momento, esta ventana de acceso preferente está disponible ahora mismo."
       }
     }
   ]
@@ -1208,6 +1232,91 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
   /* Evitar layout shift en imágenes */
   img { height: auto; max-width: 100%; }
 
+  /* ── ACCESIBILIDAD — FOCO VISIBLE PARA NAVEGACIÓN POR TECLADO ── */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  .video-wrap:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 8px;
+  }
+
+  /* ── LEAD MAGNET ── */
+  .lead-magnet-section { background: var(--dark); }
+  .lead-magnet-box {
+    max-width: 640px;
+    margin: 0 auto;
+    background: rgba(255,248,240,0.04);
+    border: 1px solid rgba(232,98,26,0.3);
+    border-radius: 20px;
+    padding: 44px 36px;
+    text-align: center;
+  }
+  .lead-magnet-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 900;
+    color: #FFF8F0;
+    margin-bottom: 12px;
+    line-height: 1.25;
+  }
+  .lead-magnet-box h3 em { font-style: italic; color: var(--orange); }
+  .lead-magnet-box p.lead-sub {
+    color: #C4A8A0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    max-width: 460px;
+    margin: 0 auto 28px;
+  }
+  .lead-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+  .lead-field { text-align: left; }
+  .lead-field label {
+    display: block;
+    color: #EDD8D0;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .lead-field input {
+    width: 100%;
+    padding: 13px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(232,98,26,0.35);
+    background: rgba(255,255,255,0.06);
+    color: #FFF8F0;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+  }
+  .lead-field input::placeholder { color: #6A4A42; }
+  .lead-submit-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #F97316 0%, #C2410C 100%);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.98rem;
+    padding: 15px 28px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    margin-top: 4px;
+  }
+  .lead-status {
+    margin-top: 16px;
+    font-size: 0.85rem;
+    color: #C4A8A0;
+    min-height: 1.2em;
+  }
+  .lead-status--success { color: #7BC47F; font-weight: 600; }
+  .lead-status--error { color: #E88A8A; font-weight: 600; }
+  .lead-status--pending { color: #FFCFB0; }
+
 </style>
 </head>
 <body>
@@ -1239,7 +1348,7 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
         <li>Tu pareja quiere separarse y tú quieres salvar la relación</li>
       </ul>
 
-      <a href="https://go.hotmart.com/D1064872390" class="cta-btn">Quiero Recuperar mi Matrimonio →</a>
+      <a href="https://go.hotmart.com/D1064872390?utm_source=restauratumatrimonio_org&utm_medium=cta&utm_campaign=funnel_principal&utm_content=hero_cta" class="cta-btn" data-cta-id="hero_cta">Quiero Recuperar mi Matrimonio →</a>
       <div class="trust-row">
         🔒 Pago 100% seguro &nbsp;·&nbsp; ✅ Acceso inmediato &nbsp;·&nbsp; 🛡️ Garantía 7 días
       </div>
@@ -1265,7 +1374,9 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
   <div class="video-inner">
     <span class="sec-label">Mensaje de Andres Arango</span>
     <h2>Antes de seguir, mira este video.<br><em>Podría cambiar tu matrimonio para siempre.</em></h2>
-    <div class="video-wrap" id="videoPlayer" onclick="playVideo()">
+    <div class="video-wrap" id="videoPlayer" onclick="playVideo()"
+         role="button" tabindex="0" aria-label="Reproducir mensaje del Pastor Andres Arango, duración 1 minuto 56 segundos"
+         onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();playVideo();}">
       <!-- Thumbnail personalizado -->
       <div class="video-thumb"></div>
       <!-- Botón de play propio -->
@@ -1525,39 +1636,60 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
     <h2 class="sec-title">¿Tienes dudas?<br><em>Aquí las respondemos</em></h2>
     <div style="margin-top:40px;">
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-1">
           ¿Y si mi matrimonio no está tan mal?
-          <span class="arrow">▼</span>
+          <span class="arrow" aria-hidden="true">▼</span>
         </button>
-        <div class="faq-a">Este curso también previene y fortalece. No tienes que estar en crisis para beneficiarte — las parejas que lo hacen antes tienen resultados aún más poderosos.</div>
+        <div class="faq-a" id="faq-a-1">Este curso también previene y fortalece. No tienes que estar en crisis para beneficiarte — las parejas que lo hacen antes tienen resultados aún más poderosos.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          ¿Puedo hacerlo sol@ si mi pareja no quiere participar?
-          <span class="arrow">▼</span>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-2">
+          ¿Y si mi pareja no quiere participar?
+          <span class="arrow" aria-hidden="true">▼</span>
         </button>
-        <div class="faq-a">Sí. Muchas transformaciones empiezan con uno. Cuando tú cambias, la dinámica de la relación cambia. No necesitas que tu pareja participe desde el inicio.</div>
+        <div class="faq-a" id="faq-a-2">Muchas transformaciones empiezan con uno. Cuando tú cambias, la dinámica de la relación cambia — no necesitas que tu pareja participe desde el inicio.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-3">
+          ¿Y si ya intenté de todo y nada funcionó?
+          <span class="arrow" aria-hidden="true">▼</span>
+        </button>
+        <div class="faq-a" id="faq-a-3">Muchas parejas llegan aquí después de terapia, libros o consejos que no dieron resultado. Este programa combina lo espiritual, lo psicológico y lo práctico en un solo sistema paso a paso, diseñado para romper los patrones que un intento aislado no puede cambiar.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-4">
+          ¿Y si estamos separados o viviendo aparte?
+          <span class="arrow" aria-hidden="true">▼</span>
+        </button>
+        <div class="faq-a" id="faq-a-4">Sí, puede ayudarte incluso si ya están separados. Muchas herramientas — sanar heridas, entender qué llevó a la crisis, reconstruir la comunicación — se trabajan primero de forma individual, antes de cualquier reencuentro.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-5">
+          ¿Vale la pena invertir $149 en esto?
+          <span class="arrow" aria-hidden="true">▼</span>
+        </button>
+        <div class="faq-a" id="faq-a-5">Compáralo con una sola sesión de terapia de pareja, que suele costar $150–$300 y requiere varias sesiones. Aquí tienes acceso de por vida a un sistema completo, con garantía de 7 días: si sientes que no es para ti, te devolvemos el 100%. El riesgo está de nuestro lado.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-6">
           ¿Cuánto tiempo necesito por semana?
-          <span class="arrow">▼</span>
+          <span class="arrow" aria-hidden="true">▼</span>
         </button>
-        <div class="faq-a">El curso está diseñado para avanzar a tu ritmo. Puedes dedicar 30-45 minutos por semana y ver resultados reales en pocas semanas.</div>
+        <div class="faq-a" id="faq-a-6">El curso está diseñado para avanzar a tu ritmo. Puedes dedicar 30-45 minutos por semana y ver resultados reales en pocas semanas.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-7">
           ¿Y si no veo resultados?
-          <span class="arrow">▼</span>
+          <span class="arrow" aria-hidden="true">▼</span>
         </button>
-        <div class="faq-a">Tienes 7 días de garantía completa. Si por cualquier razón sientes que no es para ti, te devolvemos el 100% sin preguntas. Cero riesgo.</div>
+        <div class="faq-a" id="faq-a-7">Tienes 7 días de garantía completa. Si por cualquier razón sientes que no es para ti, te devolvemos el 100% sin preguntas. Cero riesgo.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-8">
           ¿Puedo esperar para comprar?
-          <span class="arrow">▼</span>
+          <span class="arrow" aria-hidden="true">▼</span>
         </button>
-        <div class="faq-a">Cada día sin actuar, la relación se enfría más. El precio especial de $149 es limitado y puede cambiar. Lo que sí no cambia es que tu matrimonio necesita atención hoy.</div>
+        <div class="faq-a" id="faq-a-8">Puedes tomarte el tiempo que necesites. Lo único que cambia con el tiempo no es el precio — es cuánto más tiempo pasa tu matrimonio sin las herramientas que necesita. Si sientes que es el momento, esta ventana de acceso preferente está disponible ahora mismo.</div>
       </div>
     </div>
   </div>
@@ -1603,6 +1735,28 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
   </div>
 </section>
 
+<!-- LEAD MAGNET -->
+<section class="section lead-magnet-section">
+  <div class="container">
+    <div class="lead-magnet-box">
+      <h3>Guía gratis: <em>7 oraciones para restaurar tu matrimonio</em></h3>
+      <p class="lead-sub">Si todavía no estás list@ para dar el paso completo, empieza por aquí. Recibe estas 7 oraciones directo en tu correo, gratis, sin compromiso.</p>
+      <form class="lead-form" id="leadMagnetForm">
+        <div class="lead-field">
+          <label for="leadName">Nombre</label>
+          <input type="text" id="leadName" name="name" placeholder="Tu nombre" required autocomplete="name">
+        </div>
+        <div class="lead-field">
+          <label for="leadEmail">Correo electrónico</label>
+          <input type="email" id="leadEmail" name="email" placeholder="tucorreo@ejemplo.com" required autocomplete="email">
+        </div>
+        <button type="submit" class="lead-submit-btn">Enviarme la guía gratis</button>
+        <p class="lead-status" id="leadMagnetStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
 <!-- FINAL CTA -->
 <section class="final-cta">
   <h2>¿Cuánto vale para ti<br><em>salvar tu matrimonio?</em></h2>
@@ -1614,7 +1768,7 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
     <div class="price-note">Pago único · Sin suscripción · Acceso de por vida</div>
   </div>
 
-  <a href="https://go.hotmart.com/D1064872390" class="cta-btn-lg">
+  <a href="https://go.hotmart.com/D1064872390?utm_source=restauratumatrimonio_org&utm_medium=cta&utm_campaign=funnel_principal&utm_content=pricing_final_cta" class="cta-btn-lg" data-cta-id="pricing_final_cta">
     ✅ Sí, quiero recuperar mi matrimonio →
   </a>
 
@@ -1636,7 +1790,7 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
 
 <!-- STICKY MOBILE CTA -->
 <div class="sticky" id="stickyCta">
-  <a href="https://go.hotmart.com/D1064872390">🔥 Quiero recuperar mi matrimonio — $149 USD →</a>
+  <a href="https://go.hotmart.com/D1064872390?utm_source=restauratumatrimonio_org&utm_medium=cta&utm_campaign=funnel_principal&utm_content=sticky_cta" data-cta-id="sticky_cta">🔥 Quiero recuperar mi matrimonio — $149 USD →</a>
 </div>
 
 <script defer>
@@ -1700,10 +1854,11 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
     const answer = btn.nextElementSibling;
     const isOpen = answer.classList.contains('open');
     document.querySelectorAll('.faq-a.open').forEach(a => a.classList.remove('open'));
-    document.querySelectorAll('.faq-q.open').forEach(b => b.classList.remove('open'));
+    document.querySelectorAll('.faq-q.open').forEach(b => { b.classList.remove('open'); b.setAttribute('aria-expanded', 'false'); });
     if (!isOpen) {
       answer.classList.add('open');
       btn.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
     }
   }
 
@@ -1713,21 +1868,8 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
     sticky.style.display = window.scrollY > 500 ? 'block' : 'none';
   });
 
-  // META PIXEL — InitiateCheckout al hacer clic en cualquier botón que lleve
-  // al checkout de Hotmart. El Purchase real lo dispara Hotmart directo hacia
-  // Meta (conectado en su panel), esto solo captura la intención de compra
-  // para que las campañas puedan optimizar hacia gente que sí llegó al botón.
-  document.querySelectorAll('a[href*="go.hotmart.com"]').forEach(function (link) {
-    link.addEventListener('click', function () {
-      if (typeof fbq === 'function') {
-        fbq('track', 'InitiateCheckout', {
-          content_name: 'Curso Restaura Tu Matrimonio',
-          value: 149,
-          currency: 'USD',
-        });
-      }
-    });
-  });
+  // Tracking de PageView, ViewContent, clics en CTAs, InitiateCheckout y
+  // envío del lead magnet vive en analytics.js (wrapper Meta Pixel + GA4).
 </script>
 </body>
 </html>
