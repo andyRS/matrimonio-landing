@@ -111,7 +111,13 @@
       fetch(endpoint, {
         method: 'POST',
         headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: nameVal, email: emailVal, source: 'lead_magnet_7_oraciones' })
+        body: JSON.stringify({
+          name: nameVal,
+          email: emailVal,
+          source: 'lead_magnet_7_oraciones',
+          _subject: 'Nueva descarga de la guía "7 oraciones" — ' + nameVal,
+          _replyto: emailVal
+        })
       })
         .then(function (res) {
           if (!res.ok) throw new Error('Request failed with status ' + res.status);
