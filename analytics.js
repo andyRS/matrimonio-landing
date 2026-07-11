@@ -112,25 +112,26 @@
         method: 'POST',
         headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: nameVal,
-          email: emailVal,
-          source: 'lead_magnet_7_oraciones',
-          _subject: 'Nueva descarga de la guía "7 oraciones" — ' + nameVal,
-          _replyto: emailVal
+          email: emailVal
         })
       })
         .then(function (res) {
-          if (!res.ok) throw new Error('Request failed with status ' + res.status);
-          track('Lead', { content_name: 'Guia 7 oraciones' });
+          return res.json().then(function (data) {
+            if (!res.ok) throw new Error(data && data.error ? data.error : 'Request failed with status ' + res.status);
+            return data;
+          });
+        })
+        .then(function () {
+          track('Lead', { content_name: 'lead_magnet_7_dias' });
           if (statusEl) {
-            statusEl.textContent = '¡Listo! Revisa tu correo — te enviamos la guía.';
+            statusEl.textContent = '¡Listo! Revisa tu correo y la carpeta de spam — te acabamos de enviar la guía.';
             statusEl.className = 'lead-status lead-status--success';
           }
           form.reset();
         })
         .catch(function () {
           if (statusEl) {
-            statusEl.textContent = 'Hubo un problema enviando tus datos. Intenta de nuevo en unos minutos.';
+            statusEl.textContent = 'No pudimos enviar la guía en este momento. Inténtalo nuevamente en unos minutos.';
             statusEl.className = 'lead-status lead-status--error';
           }
         });
