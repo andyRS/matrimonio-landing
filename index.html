@@ -31,7 +31,7 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
 <meta property="og:url" content="https://restauratumatrimonio.org/">
 <meta property="og:title" content="¿Tu Matrimonio Está en Crisis? Hay Solución — Andres Arango">
 <meta property="og:description" content="Descubre el método paso a paso del Pastor Andres Arango para recuperar la confianza, reavivar el amor y fortalecer tu relación. Sin terapia costosa. Garantía 7 días.">
-<meta property="og:image" content="https://pub-6b628a581f5c4279a17754da05badef4.r2.dev/r2-upload/hero-mockup.webp">
+<meta property="og:image" content="https://pub-6b628a581f5c4279a17754da05badef4.r2.dev/r2-upload/hero-photo.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Restaura tu Matrimonio">
@@ -41,7 +41,7 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="¿Tu Matrimonio Está en Crisis? Hay Solución">
 <meta name="twitter:description" content="Método probado del Pastor Andres Arango para recuperar y fortalecer tu matrimonio. +4,800 parejas ayudadas.">
-<meta name="twitter:image" content="https://pub-6b628a581f5c4279a17754da05badef4.r2.dev/r2-upload/hero-mockup.webp">
+<meta name="twitter:image" content="https://pub-6b628a581f5c4279a17754da05badef4.r2.dev/r2-upload/hero-photo.webp">
 
 <!-- SCHEMA.ORG — Curso -->
 <script type="application/ld+json">
@@ -156,7 +156,7 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap"></noscript>
 <!-- Preload imagen hero (LCP crítico) -->
-<link rel="preload" as="image" href="https://pub-6b628a581f5c4279a17754da05badef4.r2.dev/r2-upload/hero-mockup.webp" fetchpriority="high">
+<link rel="preload" as="image" href="https://pub-6b628a581f5c4279a17754da05badef4.r2.dev/r2-upload/hero-photo.webp" fetchpriority="high">
 <style>
   /* Fuentes cargadas via <link> en el <head> para no bloquear render */
 
@@ -619,6 +619,21 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
 
   /* ── AUTHOR ── */
   .author-section { background: var(--light); }
+  /* Fondo oscuro + separador dorado para marcar un quiebre visual claro
+     con la sección de bonos justo encima (ambas usaban tonos crema casi
+     idénticos y se fundían entre sí). */
+  .author-section--dark {
+    background: linear-gradient(180deg, #0F0505 0%, #1A0808 100%);
+    position: relative;
+  }
+  .author-section--dark::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 120px; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
   .author-inner {
     max-width: 860px;
     margin: 0 auto;
@@ -643,6 +658,14 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
     width: 100%; height: 100%;
     object-fit: cover;
     object-position: top center;
+  }
+  /* Foto única grande del instructor, en vez de dos fotos pequeñas
+     apiladas — más editorial, menos apretado. */
+  .author-photo-main--lg {
+    height: 460px;
+    border-radius: 24px;
+    border: 1px solid rgba(212,148,10,0.35);
+    box-shadow: 0 20px 56px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.3);
   }
   .author-photo-stage {
     width: 100%;
@@ -675,6 +698,11 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
     font-size: 0.97rem;
     line-height: 1.75;
   }
+  .author-text--dark .name { color: #FFF8F0; }
+  .author-text--dark .role { color: var(--gold); }
+  .author-text--dark p { color: #C4A8A0; }
+  .author-text--dark p strong { color: #FFF8F0; }
+  .author-text--dark p em { color: var(--orange); font-style: normal; }
 
   /* ── TESTIMONIALS ── */
   .testim-grid {
@@ -854,6 +882,8 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
     .author-photos-col { flex-direction: row; justify-content: center; gap: 12px; }
     .author-photo-main { width: 140px; height: 180px; }
     .author-photo-stage { width: 140px; height: 100px; }
+    .author-photos-col--single { flex-direction: column; }
+    .author-photo-main--lg { width: 100%; max-width: 320px; height: 340px; margin: 0 auto; }
 
     /* VIDEO PRINCIPAL */
     .video-section { padding: 40px 16px; }
@@ -925,6 +955,7 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
     .author-photos-col { flex-direction: column; align-items: center; }
     .author-photo-main { width: 200px; height: 240px; }
     .author-photo-stage { width: 200px; height: 120px; }
+    .author-photo-main--lg { width: 100%; max-width: 280px; height: 300px; }
 
     /* PROOF BAR — 2x2 */
     .proof-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -1356,7 +1387,7 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
 
     <div class="hero-img">
       <div class="glow-orb"></div>
-      <img src="https://pub-6b628a581f5c4279a17754da05badef4.r2.dev/r2-upload/hero-mockup.webp" alt="Curso Cómo Recuperar y Fortalecer tu Matrimonio" width="540" height="480" loading="eager" fetchpriority="high">
+      <img src="https://pub-6b628a581f5c4279a17754da05badef4.r2.dev/r2-upload/hero-photo.webp" alt="Pastor Andres Arango hablando sobre restauración matrimonial" width="1200" height="1089" loading="eager" fetchpriority="high">
     </div>
   </div>
 </section>
@@ -1526,19 +1557,15 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
 </section>
 
 <!-- AUTHOR -->
-<section class="section author-section">
+<section class="section author-section author-section--dark">
   <div class="author-inner container">
-    <div class="author-photos-col">
-      <div class="author-photo-main">
-        <img loading="lazy" src="https://pub-6b628a581f5c4279a17754da05badef4.r2.dev/r2-upload/autor-principal.webp"
-             alt="Pastor Andres Arango" width="260" height="300">
-      </div>
-      <div class="author-photo-stage">
-        <img loading="lazy" src="https://pub-6b628a581f5c4279a17754da05badef4.r2.dev/r2-upload/autor-conferencia.webp"
-             alt="Andres Arango en conferencia" width="260" height="160">
+    <div class="author-photos-col author-photos-col--single">
+      <div class="author-photo-main author-photo-main--lg">
+        <img loading="lazy" src="https://pub-6b628a581f5c4279a17754da05badef4.r2.dev/r2-upload/instructor-main.webp"
+             alt="Pastor Andres Arango en conferencia" width="1000" height="1190">
       </div>
     </div>
-    <div class="author-text">
+    <div class="author-text author-text--dark">
       <p class="role">Tu instructor</p>
       <h3 class="name">Andres Arango</h3>
       <p>Pastor y psicólogo clínico con más de <strong>20 años de experiencia</strong> ayudando a parejas en procesos de restauración y crecimiento. Ha impartido conferencias para miles de familias en toda Latinoamérica, acompañando a parejas en crisis a sanar heridas profundas y crear matrimonios que no solo sobreviven — sino que <em>florecen</em>.</p>
@@ -1546,13 +1573,13 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
       <p>Su enfoque único combina la psicología clínica con los principios espirituales, abordando el matrimonio en su totalidad: <strong>mente, corazón y espíritu.</strong> Por eso su método funciona donde la terapia convencional no llega.</p>
       <br>
       <div class="credentials-row" style="display:flex;gap:20px;flex-wrap:wrap;margin-top:4px;">
-        <div style="display:flex;align-items:center;gap:8px;font-size:0.88rem;color:var(--gray);">
+        <div style="display:flex;align-items:center;gap:8px;font-size:0.88rem;color:#C4A8A0;">
           <span style="font-size:1.2rem;">🎓</span> Psicólogo Clínico Certificado
         </div>
-        <div style="display:flex;align-items:center;gap:8px;font-size:0.88rem;color:var(--gray);">
+        <div style="display:flex;align-items:center;gap:8px;font-size:0.88rem;color:#C4A8A0;">
           <span style="font-size:1.2rem;">✝️</span> Pastor con +20 años de ministerio
         </div>
-        <div style="display:flex;align-items:center;gap:8px;font-size:0.88rem;color:var(--gray);">
+        <div style="display:flex;align-items:center;gap:8px;font-size:0.88rem;color:#C4A8A0;">
           <span style="font-size:1.2rem;">🎤</span> Conferencista internacional
         </div>
       </div>
