@@ -890,7 +890,7 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
     .video-inner h2 { font-size: clamp(1.3rem, 4.5vw, 1.8rem); margin-bottom: 20px; }
     .video-wrap { border-radius: 12px; }
     .video-overlay-top { height: 44px; border-radius: 12px 12px 0 0; }
-    .video-overlay-bottom { width: 100px; height: 36px; border-radius: 0 0 12px 0; }
+    .video-overlay-bottom { height: 60px; border-radius: 0 0 12px 12px; }
     .play-circle { width: 60px; height: 60px; }
     .play-circle svg { width: 24px; height: 24px; }
     .play-label { font-size: 0.72rem; padding: 5px 14px; }
@@ -923,8 +923,8 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
     /* CREDENCIALES AUTOR — evita que se peguen al borde */
     .credentials-row { gap: 14px !important; justify-content: center; }
 
-    /* VIDEO OVERLAY — cubrir mejor el logo de YouTube en móvil */
-    .video-overlay-bottom { width: 100px !important; height: 44px !important; }
+    /* VIDEO OVERLAY — cubrir mejor la franja de YouTube en móvil */
+    .video-overlay-bottom { height: 64px !important; }
 
     /* TABLA RESUMEN DE VALOR — evitar solape de precios */
     .resumen-total-row { flex-direction: column; align-items: center !important; text-align: center; gap: 4px; }
@@ -943,7 +943,7 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
     .video-inner h2 { font-size: 1.2rem; }
     .video-wrap { border-radius: 10px; }
     .video-overlay-top { height: 40px; border-radius: 10px 10px 0 0; }
-    .video-overlay-bottom { width: 80px; height: 32px; }
+    .video-overlay-bottom { height: 58px; }
     .play-circle { width: 52px; height: 52px; }
     .play-circle svg { width: 20px; height: 20px; }
     .play-label { display: none; }
@@ -1106,16 +1106,19 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
        parte superior de la foto sin necesidad. */
     display: none;
   }
-  /* Capa que cubre el logo inferior derecho de YouTube */
+  /* Capa que cubre toda la franja inferior de YouTube (logo, compartir,
+     historial, subtítulos, barra de progreso) -- pointer-events:none en
+     el iframe no basta porque esa capa de YouTube no siempre depende de
+     hover, así que la tapamos por completo con nuestra propia barra en
+     vez de intentar adivinar qué parte cubrir. */
   .video-overlay-bottom {
     position: absolute;
-    bottom: 0; right: 0;
-    width: 140px;
-    height: 40px;
+    bottom: 0; left: 0; right: 0;
+    height: 68px;
     background: #0F0505;
     z-index: 10;
     pointer-events: none;
-    border-radius: 0 0 20px 0;
+    border-radius: 0 0 20px 20px;
     display: none;
   }
   .video-wrap.playing .video-overlay-top,
