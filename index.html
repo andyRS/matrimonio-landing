@@ -1097,7 +1097,7 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 52px;
-    background: #0F0505;
+    background: linear-gradient(90deg, #0F0505, #3D1212, #0F0505);
     z-index: 10;
     pointer-events: none;
     border-radius: 20px 20px 0 0;
@@ -1105,6 +1105,16 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
        antes quedaba visible también sobre el thumbnail, recortando la
        parte superior de la foto sin necesidad. */
     display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  .video-wrap.playing .video-overlay-top { display: flex; }
+  .video-overlay-top-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.03em;
   }
   /* Capa que cubre toda la franja inferior de YouTube (logo, compartir,
      historial, subtítulos, barra de progreso) -- pointer-events:none en
@@ -1121,7 +1131,6 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
     border-radius: 0 0 20px 20px;
     display: none;
   }
-  .video-wrap.playing .video-overlay-top,
   .video-wrap.playing .video-overlay-bottom {
     display: block;
   }
@@ -1512,7 +1521,9 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
           <!-- Se convierte en el player real de YouTube vía la API oficial al hacer clic -->
           <div id="videoIframe"></div>
           <!-- Capas que cubren el branding de YouTube -->
-          <div class="video-overlay-top"></div>
+          <div class="video-overlay-top">
+            <span class="video-overlay-top-label">✝️ Restaura tu Matrimonio</span>
+          </div>
           <div class="video-overlay-bottom"></div>
           <!-- Controles propios: el iframe no recibe clics/hover directos
                (pointer-events:none), así nunca aparecen los íconos de
