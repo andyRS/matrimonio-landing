@@ -896,6 +896,9 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
     .play-label { font-size: 0.72rem; padding: 5px 14px; }
     .video-duration { font-size: 0.7rem; bottom: 10px; right: 10px; }
     .video-cta { font-size: 0.82rem; margin-top: 16px; }
+    .video-layout { gap: 28px; text-align: center; }
+    .video-side { align-items: center; }
+    .video-side .check-list li { text-align: left; }
 
     /* TESTIMONIOS VIDEO */
     .testim-videos { grid-template-columns: 1fr !important; gap: 16px; max-width: 420px; margin-left: auto; margin-right: auto; }
@@ -1029,11 +1032,34 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
   .video-section {
     background: #0F0505;
     padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Glows decorativos — antes esta sección era un bloque plano con mucho
+     espacio muerto a los lados del video en pantallas anchas. */
+  .video-section::before,
+  .video-section::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .video-section::before {
+    width: 520px; height: 520px;
+    top: -180px; left: -160px;
+    background: radial-gradient(circle, rgba(232,98,26,0.16) 0%, transparent 70%);
+  }
+  .video-section::after {
+    width: 460px; height: 460px;
+    bottom: -160px; right: -140px;
+    background: radial-gradient(circle, rgba(212,148,10,0.14) 0%, transparent 70%);
   }
   .video-inner {
-    max-width: 860px;
+    max-width: 1100px;
     margin: 0 auto;
     text-align: center;
+    position: relative;
+    z-index: 1;
   }
   .video-inner .sec-label { color: var(--gold); }
   .video-inner h2 {
@@ -1041,10 +1067,33 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
     font-size: clamp(1.6rem, 3vw, 2.2rem);
     font-weight: 900;
     color: #FFF8F0;
-    margin: 12px 0 32px;
+    margin: 12px 0 40px;
     line-height: 1.25;
   }
   .video-inner h2 em { font-style: italic; color: var(--orange); }
+
+  /* Layout de 2 columnas en pantallas anchas: video + lista de lo que
+     descubrirá, para que el espacio a los lados del video tenga
+     contenido real, no solo decoración. */
+  .video-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+    text-align: left;
+  }
+  .video-side { display: flex; flex-direction: column; gap: 22px; }
+  .video-side .video-side-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #9A7D78;
+  }
+  @media (min-width: 900px) {
+    .video-layout { grid-template-columns: 1.25fr 1fr; gap: 56px; }
+    .video-main .video-cta { text-align: left; }
+  }
   /* Capa que cubre la barra superior de YouTube */
   .video-overlay-top {
     position: absolute;
@@ -1405,31 +1454,45 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
   <div class="video-inner">
     <span class="sec-label">Mensaje de Andres Arango</span>
     <h2>Antes de seguir, mira este video.<br><em>Podría cambiar tu matrimonio para siempre.</em></h2>
-    <div class="video-wrap" id="videoPlayer" onclick="playVideo()"
-         role="button" tabindex="0" aria-label="Reproducir mensaje del Pastor Andres Arango, duración 1 minuto 56 segundos"
-         onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();playVideo();}">
-      <!-- Thumbnail personalizado -->
-      <div class="video-thumb"></div>
-      <!-- Botón de play propio -->
-      <div class="play-btn">
-        <div class="play-circle">
-          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+
+    <div class="video-layout">
+      <div class="video-main">
+        <div class="video-wrap" id="videoPlayer" onclick="playVideo()"
+             role="button" tabindex="0" aria-label="Reproducir mensaje del Pastor Andres Arango, duración 1 minuto 56 segundos"
+             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();playVideo();}">
+          <!-- Thumbnail personalizado -->
+          <div class="video-thumb"></div>
+          <!-- Botón de play propio -->
+          <div class="play-btn">
+            <div class="play-circle">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="play-label">▶ Ver mensaje del Pastor Andres</span>
+          </div>
+          <!-- Duración -->
+          <div class="video-duration">1:56</div>
+          <!-- iframe carga solo al hacer clic -->
+          <iframe id="videoIframe"
+                  data-src="https://www.youtube.com/embed/TSISdheL8D8?rel=0&modestbranding=1&controls=1&autoplay=1&showinfo=0&iv_load_policy=3&cc_load_policy=0&disablekb=1"
+                  title="Cómo Recuperar y Fortalecer tu Matrimonio — Andres Arango"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+          <!-- Capas que cubren el branding de YouTube -->
+          <div class="video-overlay-top"></div>
+          <div class="video-overlay-bottom"></div>
         </div>
-        <span class="play-label">▶ Ver mensaje del Pastor Andres</span>
+        <p class="video-cta">👆 Este video explica exactamente por qué tu matrimonio puede recuperarse — sin importar cuánto tiempo lleve la crisis.</p>
       </div>
-      <!-- Duración -->
-      <div class="video-duration">1:56</div>
-      <!-- iframe carga solo al hacer clic -->
-      <iframe id="videoIframe"
-              data-src="https://www.youtube.com/embed/TSISdheL8D8?rel=0&modestbranding=1&controls=1&autoplay=1&showinfo=0&iv_load_policy=3&cc_load_policy=0&disablekb=1"
-              title="Cómo Recuperar y Fortalecer tu Matrimonio — Andres Arango"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-      <!-- Capas que cubren el branding de YouTube -->
-      <div class="video-overlay-top"></div>
-      <div class="video-overlay-bottom"></div>
+
+      <div class="video-side">
+        <span class="video-side-label">Lo que vas a descubrir</span>
+        <ul class="check-list">
+          <li><span class="ck">✓</span>Por qué la crisis que vives ahora mismo no significa el final de tu matrimonio</li>
+          <li><span class="ck">✓</span>El error más común que sin saberlo alarga el sufrimiento de las parejas en crisis</li>
+          <li><span class="ck">✓</span>El primer paso concreto que puedes dar hoy mismo, sin esperar a que tu pareja cambie</li>
+        </ul>
+      </div>
     </div>
-    <p class="video-cta">👆 Este video explica exactamente por qué tu matrimonio puede recuperarse — sin importar cuánto tiempo lleve la crisis.</p>
   </div>
 </section>
 
