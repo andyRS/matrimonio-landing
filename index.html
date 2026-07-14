@@ -826,6 +826,31 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
     text-align: center; text-decoration: none;
   }
 
+  /* ── WHATSAPP FLOTANTE ── */
+  .whatsapp-float {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 210;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .whatsapp-float:hover { transform: scale(1.06); box-shadow: 0 10px 30px rgba(0,0,0,0.45); }
+  .whatsapp-float svg { width: 30px; height: 30px; fill: #fff; }
+
+  @media (max-width: 768px) {
+    /* En móvil el sticky CTA ocupa toda la franja inferior — subimos el botón */
+    .whatsapp-float { right: 14px; bottom: 90px; width: 52px; height: 52px; }
+    .whatsapp-float svg { width: 26px; height: 26px; }
+  }
+
   /* ═══════════════════════════════════
      RESPONSIVE — TABLET (max 768px)
   ═══════════════════════════════════ */
@@ -1976,6 +2001,15 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
 <div class="sticky" id="stickyCta">
   <a href="https://go.hotmart.com/D1064872390?utm_source=restauratumatrimonio_org&utm_medium=cta&utm_campaign=funnel_principal&utm_content=sticky_cta" data-cta-id="sticky_cta">🔥 Quiero recuperar mi matrimonio — $149 USD →</a>
 </div>
+
+<!-- WHATSAPP FLOTANTE -->
+<a class="whatsapp-float"
+   href="https://wa.me/18492763532?text=Hola%2C%20tengo%20una%20duda%20sobre%20el%20curso%20para%20recuperar%20mi%20matrimonio."
+   target="_blank" rel="noopener noreferrer"
+   data-cta-id="whatsapp_float"
+   aria-label="Escríbenos por WhatsApp si tienes dudas">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.001 2C6.478 2 2 6.478 2 12c0 1.86.505 3.603 1.383 5.098L2 22l5.03-1.35C8.475 21.49 10.187 22 12.001 22 17.523 22 22 17.522 22 12S17.523 2 12.001 2zm0 18.16c-1.634 0-3.155-.478-4.436-1.302l-.318-.19-3.09.83.828-3.04-.207-.323A7.98 7.98 0 0 1 4.001 12c0-4.418 3.582-8 8-8 4.417 0 8 3.582 8 8s-3.583 8.16-8 8.16z"/></svg>
+</a>
 
 <script src="https://www.youtube.com/iframe_api" async></script>
 <script defer>
