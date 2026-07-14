@@ -34,6 +34,15 @@
   }
 
   loadMetaPixel(config.META_PIXEL_ID);
+  // Second Pixel lives under a different Meta Business Manager than the
+  // first (the one with access to the ad account actually running
+  // campaigns) -- calling fbq('init', ...) again with a second ID makes
+  // every subsequent fbq('track', ...) send to both Pixels, without
+  // needing Meta's cross-business asset sharing (blocked for new
+  // businesses for several weeks).
+  if (config.META_PIXEL_ID_2) {
+    window.fbq('init', config.META_PIXEL_ID_2);
+  }
   loadGA4(config.GA4_MEASUREMENT_ID);
 
   // Eventos estándar de Meta -- todo lo que no esté aquí se envía como trackCustom.
