@@ -9,8 +9,7 @@
   window.RTM_CONFIG = {
     META_PIXEL_ID: '1792476815276272',
     META_PIXEL_ID_2: '1639376823820584',
-    GA4_MEASUREMENT_ID: 'G-TPS7XFZXM7',
-    LEAD_MAGNET_ENDPOINT: 'https://matrimonio-landing-api.vercel.app/api/newsletter'
+    GA4_MEASUREMENT_ID: 'G-TPS7XFZXM7'
   };
 </script>
 <script defer src="./analytics.js"></script>
@@ -1395,81 +1394,6 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
     border-radius: 8px;
   }
 
-  /* ── LEAD MAGNET ── */
-  .lead-magnet-section { background: var(--dark); }
-  .lead-magnet-box {
-    max-width: 640px;
-    margin: 0 auto;
-    background: rgba(255,248,240,0.04);
-    border: 1px solid rgba(232,98,26,0.3);
-    border-radius: 20px;
-    padding: 44px 36px;
-    text-align: center;
-  }
-  .lead-magnet-box h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.4rem, 3vw, 1.9rem);
-    font-weight: 900;
-    color: #FFF8F0;
-    margin-bottom: 12px;
-    line-height: 1.25;
-  }
-  .lead-magnet-box h3 em { font-style: italic; color: var(--orange); }
-  .lead-magnet-box p.lead-sub {
-    color: #C4A8A0;
-    font-size: 0.95rem;
-    line-height: 1.7;
-    max-width: 460px;
-    margin: 0 auto 28px;
-  }
-  .lead-form {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    max-width: 380px;
-    margin: 0 auto;
-  }
-  .lead-field { text-align: left; }
-  .lead-field label {
-    display: block;
-    color: #EDD8D0;
-    font-size: 0.82rem;
-    font-weight: 600;
-    margin-bottom: 6px;
-  }
-  .lead-field input {
-    width: 100%;
-    padding: 13px 16px;
-    border-radius: 10px;
-    border: 1px solid rgba(232,98,26,0.35);
-    background: rgba(255,255,255,0.06);
-    color: #FFF8F0;
-    font-size: 0.95rem;
-    font-family: 'Inter', sans-serif;
-  }
-  .lead-field input::placeholder { color: #6A4A42; }
-  .lead-submit-btn {
-    display: inline-block;
-    background: linear-gradient(135deg, #F97316 0%, #C2410C 100%);
-    color: #fff;
-    font-weight: 700;
-    font-size: 0.98rem;
-    padding: 15px 28px;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    margin-top: 4px;
-  }
-  .lead-status {
-    margin-top: 16px;
-    font-size: 0.85rem;
-    color: #C4A8A0;
-    min-height: 1.2em;
-  }
-  .lead-status--success { color: #7BC47F; font-weight: 600; }
-  .lead-status--error { color: #E88A8A; font-weight: 600; }
-  .lead-status--pending { color: #FFCFB0; }
-
 </style>
 </head>
 <body>
@@ -1516,7 +1440,6 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
 
 <!-- PROOF BAR -->
 <div class="proof-bar">
-  <div class="proof-item"><span>🔥</span> 100° Temperatura en Hotmart</div>
   <div class="proof-item"><span>👥</span> +4,800 parejas ayudadas</div>
   <div class="proof-item"><span>⭐</span> Productor verificado desde 2025</div>
   <div class="proof-item"><span>🛡️</span> Garantía 7 días</div>
@@ -1760,8 +1683,8 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
         <div style="color:#9A7D78;font-size:0.82rem;">Parejas ayudadas</div>
       </div>
       <div style="text-align:center;">
-        <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--gold);">100°</div>
-        <div style="color:#9A7D78;font-size:0.82rem;">Temperatura Hotmart</div>
+        <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--gold);">7 días</div>
+        <div style="color:#9A7D78;font-size:0.82rem;">Garantía de reembolso</div>
       </div>
     </div>
   </div>
@@ -1944,28 +1867,6 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- LEAD MAGNET -->
-<section class="section lead-magnet-section">
-  <div class="container">
-    <div class="lead-magnet-box">
-      <h3>Guía gratis: <em>7 días de oración por la restauración de tu matrimonio</em></h3>
-      <p class="lead-sub">Si todavía no estás list@ para dar el paso completo, empieza por aquí. Recibe esta guía devocional de 7 días directo en tu correo, gratis, sin compromiso.</p>
-      <form class="lead-form" id="leadMagnetForm">
-        <div class="lead-field">
-          <label for="leadName">Nombre</label>
-          <input type="text" id="leadName" name="name" placeholder="Tu nombre" required autocomplete="name">
-        </div>
-        <div class="lead-field">
-          <label for="leadEmail">Correo electrónico</label>
-          <input type="email" id="leadEmail" name="email" placeholder="tucorreo@ejemplo.com" required autocomplete="email">
-        </div>
-        <button type="submit" class="lead-submit-btn">Enviarme la guía gratis</button>
-        <p class="lead-status" id="leadMagnetStatus" role="status" aria-live="polite"></p>
-      </form>
-    </div>
-  </div>
-</section>
-
 <!-- FINAL CTA -->
 <section class="final-cta">
   <h2>¿Cuánto vale para ti<br><em>salvar tu matrimonio?</em></h2>
@@ -1994,7 +1895,7 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
   <p>Este sitio es operado por un afiliado independiente autorizado de Hotmart.<br>
   Los resultados individuales pueden variar. Los testimonios no garantizan resultados idénticos.<br>
   Producto creado por Andres Arango · Distribuido mediante el Programa de Afiliados de Hotmart<br>
-  <a href="privacidad.html">Política de Privacidad</a> &nbsp;·&nbsp; <a href="terminos.html">Términos de Uso</a> &nbsp;·&nbsp; <a href="contacto.html">Contacto</a></p>
+  <a href="privacidad.html">Política de Privacidad</a> &nbsp;·&nbsp; <a href="cookies.html">Cookies</a> &nbsp;·&nbsp; <a href="terminos.html">Términos de Uso</a> &nbsp;·&nbsp; <a href="afiliados.html">Afiliados</a> &nbsp;·&nbsp; <a href="contacto.html">Contacto</a></p>
 </footer>
 
 <!-- STICKY MOBILE CTA -->
@@ -2152,8 +2053,8 @@ src="https://www.facebook.com/tr?id=1792476815276272&ev=PageView&noscript=1"
     sticky.style.display = window.scrollY > 500 ? 'block' : 'none';
   });
 
-  // Tracking de PageView, ViewContent, clics en CTAs, InitiateCheckout y
-  // envío del lead magnet vive en analytics.js (wrapper Meta Pixel + GA4).
+  // Tracking de PageView, ViewContent, clics en CTAs e InitiateCheckout
+  // vive en analytics.js (wrapper Meta Pixel + GA4).
 </script>
 </body>
 </html>

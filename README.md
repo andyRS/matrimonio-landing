@@ -30,8 +30,7 @@ Toda la configuración de tracking vive en un solo bloque, al inicio del `<head>
 <script>
   window.RTM_CONFIG = {
     META_PIXEL_ID: '1792476815276272',
-    GA4_MEASUREMENT_ID: '',        // Ej: 'G-XXXXXXXXXX'
-    LEAD_MAGNET_ENDPOINT: ''       // Ej: 'https://formspree.io/f/xxxxxxx'
+    GA4_MEASUREMENT_ID: ''         // Ej: 'G-XXXXXXXXXX'
   };
 </script>
 ```
@@ -49,19 +48,8 @@ Toda la configuración de tracking vive en un solo bloque, al inicio del `<head>
 | ViewContent     | Al cargar la página (vista del curso)                 | `ViewContent`        | `view_item`       |
 | CtaClick        | Clic en cualquier CTA hacia Hotmart                   | `trackCustom`        | `select_content`  |
 | InitiateCheckout| Justo antes de salir hacia el checkout de Hotmart     | `InitiateCheckout`   | `begin_checkout`  |
-| Lead            | Envío exitoso del formulario de lead magnet           | `Lead`               | `generate_lead`   |
 
 El *Purchase* real NO se trackea desde este sitio — lo dispara Hotmart directamente a Meta vía API de Conversiones (Hotmart es quien sabe si la venta se completó).
-
-## Cómo configurar el endpoint del lead magnet
-
-La sección "Guía gratis: 7 oraciones para restaurar tu matrimonio" (antes del CTA final) tiene un formulario de nombre + email. Para que envíe datos de verdad, necesitas un servicio de captura de leads compatible con `fetch POST` + JSON:
-
-1. Crea un formulario en **[Formspree](https://formspree.io)**, **Brevo** o **MailerLite** (cualquiera que acepte `POST` con `Content-Type: application/json` y devuelva `2xx` en éxito).
-2. Copia la URL del endpoint.
-3. Pégala en `LEAD_MAGNET_ENDPOINT` dentro de `RTM_CONFIG` en `index.html`.
-
-Mientras `LEAD_MAGNET_ENDPOINT` esté vacío, el formulario no falla ni rompe la página — muestra un mensaje de "configuración pendiente" y deja constancia en la consola del navegador (`console.info`), para que sea obvio que falta conectar el endpoint.
 
 ## Cómo publicar en GitHub Pages
 
@@ -75,14 +63,16 @@ Este repo ya está configurado para GitHub Pages con dominio custom (ver `CNAME`
    ```
    para confirmar que el cambio ya está en el repo, incluso si el dominio en vivo todavía muestra la versión anterior.
 
+## Limitaciones conocidas
+
+- **Sin cabeceras de seguridad configurables.** GitHub Pages no permite establecer `Content-Security-Policy`, `Strict-Transport-Security`, `X-Frame-Options` ni `Permissions-Policy` en las respuestas del dominio custom — no hay forma de configurarlas sin poner un proxy delante (ej. Cloudflare). Si esto se vuelve un requisito (por ejemplo, para cumplir con algún estándar de seguridad de una pasarela de pago o anunciante), la opción es migrar el hosting o poner el dominio detrás de Cloudflare en modo proxy.
+
 ## Checklist antes de lanzar campañas de pago
 
 - [ ] `META_PIXEL_ID` configurado y verificado en Meta Events Manager (conjunto de datos con actividad de eventos > 0)
 - [ ] Hotmart → Configuración de Píxel: Evento vía Web y Evento vía API ambos en verde ("Configurado" / "Token configurado")
 - [ ] `GA4_MEASUREMENT_ID` configurado si vas a correr campañas también en Google Ads
-- [ ] `LEAD_MAGNET_ENDPOINT` configurado y probado (envía un lead de prueba y confirma que llega al servicio conectado)
 - [ ] Countdown de 48h probado: debe iniciar en la primera visita, persistir en recargas, y **ocultarse por completo** al llegar a cero (nunca reiniciarse ni fingir tiempo restante)
 - [ ] Revisar que los 3 CTAs hacia Hotmart tengan sus UTMs (`utm_source`, `utm_medium`, `utm_campaign`, `utm_content`) y que el link base (`https://go.hotmart.com/D1064872390`) no haya sido alterado
-- [ ] Probar el formulario de lead magnet en escritorio y móvil
 - [ ] Revisar accesibilidad básica: navegación completa por teclado (Tab), video reproducible con Enter/Espacio, FAQ con `aria-expanded` correcto
 - [ ] Confirmar que no queda ningún dato de "reviews" o "rating" no verificable en el schema.org (`aggregateRating` fue removido intencionalmente por no ser verificable)

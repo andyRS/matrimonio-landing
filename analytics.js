@@ -89,62 +89,6 @@
         track('InitiateCheckout', { content_name: 'Curso Restaura Tu Matrimonio', value: 149, currency: 'USD' });
       });
     });
-
-    // Formulario del lead magnet ("Guía gratis: 7 oraciones para restaurar tu matrimonio").
-    var form = document.getElementById('leadMagnetForm');
-    if (!form) return;
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var statusEl = document.getElementById('leadMagnetStatus');
-      var endpoint = config.LEAD_MAGNET_ENDPOINT;
-      var nameInput = form.querySelector('[name="name"]');
-      var emailInput = form.querySelector('[name="email"]');
-      var nameVal = nameInput ? nameInput.value : '';
-      var emailVal = emailInput ? emailInput.value : '';
-
-      if (!endpoint) {
-        console.info('[RTM Analytics] Lead magnet: no hay LEAD_MAGNET_ENDPOINT configurado en RTM_CONFIG. Configura un endpoint (Formspree/Brevo/MailerLite) en index.html para activar el envío real.');
-        if (statusEl) {
-          statusEl.textContent = 'Configuración pendiente: aún no hay un servicio conectado para recibir la guía. Escríbenos y te la enviamos manualmente.';
-          statusEl.className = 'lead-status lead-status--pending';
-        }
-        return;
-      }
-
-      if (statusEl) {
-        statusEl.textContent = 'Enviando...';
-        statusEl.className = 'lead-status';
-      }
-
-      fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: emailVal
-        })
-      })
-        .then(function (res) {
-          return res.json().then(function (data) {
-            if (!res.ok) throw new Error(data && data.error ? data.error : 'Request failed with status ' + res.status);
-            return data;
-          });
-        })
-        .then(function () {
-          track('Lead', { content_name: 'lead_magnet_7_dias' });
-          if (statusEl) {
-            statusEl.textContent = '¡Listo! Revisa tu correo y la carpeta de spam — te acabamos de enviar la guía.';
-            statusEl.className = 'lead-status lead-status--success';
-          }
-          form.reset();
-        })
-        .catch(function () {
-          if (statusEl) {
-            statusEl.textContent = 'No pudimos enviar la guía en este momento. Inténtalo nuevamente en unos minutos.';
-            statusEl.className = 'lead-status lead-status--error';
-          }
-        });
-    });
   }
 
   if (document.readyState === 'loading') {
