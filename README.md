@@ -5,8 +5,10 @@ Sitio estático (HTML/CSS/JS puro, sin build step) para **restauratumatrimonio.o
 ## Estructura
 
 ```
-index.html       # Página principal (todo el markup, estilos y scripts de la página)
-analytics.js      # Wrapper de tracking: Meta Pixel + GA4, config-driven, no falla si faltan IDs
+index.html       # Contenido y estructura de la página principal
+styles.css       # Estilos de la landing adaptable a móvil
+landing.js       # Reproducción de video bajo demanda y CTA móvil
+analytics.js     # Wrapper de tracking: Meta Pixel + GA4
 contacto.html, privacidad.html, terminos.html
 CNAME             # Dominio custom para GitHub Pages
 sitemap.xml, robots.txt
@@ -30,15 +32,15 @@ Toda la configuración de tracking vive en un solo bloque, al inicio del `<head>
 <script>
   window.RTM_CONFIG = {
     META_PIXEL_ID: '1792476815276272',
-    GA4_MEASUREMENT_ID: ''         // Ej: 'G-XXXXXXXXXX'
+    META_PIXEL_ID_2: '1639376823820584',
+    GA4_MEASUREMENT_ID: 'G-TPS7XFZXM7'
   };
 </script>
 ```
 
 - **Meta Pixel**: ya está configurado con el Pixel ID `1792476815276272` (Meta Events Manager → conjunto de datos "Restaura tu matrimonio"). Si necesitas cambiarlo, edita `META_PIXEL_ID`. Si lo dejas vacío, el Pixel simplemente no se carga — no rompe nada.
   - El Pixel también tiene configurada la **API de Conversiones** del lado de Hotmart (Hotmart → Configuración de Píxel → token de acceso generado en Meta Events Manager), para que `Ventas realizadas` y `Visitas en la Página de Pago` lleguen directo desde el servidor, sin depender de cookies del navegador.
-- **GA4**: pega tu Measurement ID (`G-XXXXXXXXXX`, de Google Analytics → Administrador → Flujos de datos) en `GA4_MEASUREMENT_ID`. Mientras esté vacío, GA4 no se activa.
-- El `<noscript>` de fallback del Pixel (para usuarios sin JavaScript) tiene el ID hardcodeado por separado — si cambias `META_PIXEL_ID`, actualiza también ese `<img src="...facebook.com/tr?id=...">` justo debajo.
+- **GA4**: el Measurement ID actual está en `GA4_MEASUREMENT_ID`. Si se deja vacío, GA4 no se activa.
 
 ### Eventos que se trackean automáticamente (`analytics.js`)
 
@@ -46,10 +48,11 @@ Toda la configuración de tracking vive en un solo bloque, al inicio del `<head>
 |-----------------|-------------------------------------------------------|----------------------|-------------------|
 | PageView        | Al cargar la página                                   | `PageView`           | automático (config)|
 | ViewContent     | Al cargar la página (vista del curso)                 | `ViewContent`        | `view_item`       |
-| CtaClick        | Clic en cualquier CTA hacia Hotmart                   | `trackCustom`        | `select_content`  |
-| InitiateCheckout| Justo antes de salir hacia el checkout de Hotmart     | `InitiateCheckout`   | `begin_checkout`  |
+| CtaClick        | Clic en un enlace hacia la página del productor       | `trackCustom`        | `select_content`  |
 
-El *Purchase* real NO se trackea desde este sitio — lo dispara Hotmart directamente a Meta vía API de Conversiones (Hotmart es quien sabe si la venta se completó).
+El enlace `go.hotmart.com/D1064872390` redirige primero a la **carta de ventas del productor**, no al checkout. Por eso esta landing no dispara `InitiateCheckout`. La plataforma externa debe registrar el inicio real de compra y la venta. Esta landing tampoco dispara *Purchase*.
+
+Cuando la visita llega con `utm_source` y `utm_term` (o `utm_content`) válidos, `landing.js` agrega esa procedencia como `utm_term` al enlace saliente. Así se conserva el origen del artículo sin sobrescribir el identificador del CTA (`utm_content`).
 
 ## Cómo publicar en GitHub Pages
 
@@ -72,7 +75,8 @@ Este repo ya está configurado para GitHub Pages con dominio custom (ver `CNAME`
 - [ ] `META_PIXEL_ID` configurado y verificado en Meta Events Manager (conjunto de datos con actividad de eventos > 0)
 - [ ] Hotmart → Configuración de Píxel: Evento vía Web y Evento vía API ambos en verde ("Configurado" / "Token configurado")
 - [ ] `GA4_MEASUREMENT_ID` configurado si vas a correr campañas también en Google Ads
-- [ ] Countdown de 48h probado: debe iniciar en la primera visita, persistir en recargas, y **ocultarse por completo** al llegar a cero (nunca reiniciarse ni fingir tiempo restante)
-- [ ] Revisar que los 3 CTAs hacia Hotmart tengan sus UTMs (`utm_source`, `utm_medium`, `utm_campaign`, `utm_content`) y que el link base (`https://go.hotmart.com/D1064872390`) no haya sido alterado
+- [ ] Confirmar en la carta de ventas del productor el precio, los cuatro bonos y las condiciones de reembolso. El 19/10/2026 mostraba **US$97** como precio especial y siete días de garantía; si cambia, actualizar `index.html`.
+- [ ] Revisar que los CTAs hacia Hotmart tengan sus UTMs (`utm_source`, `utm_medium`, `utm_campaign`, `utm_content`) y que el enlace base (`https://go.hotmart.com/D1064872390`) no haya sido alterado.
 - [ ] Revisar accesibilidad básica: navegación completa por teclado (Tab), video reproducible con Enter/Espacio, FAQ con `aria-expanded` correcto
-- [ ] Confirmar que no queda ningún dato de "reviews" o "rating" no verificable en el schema.org (`aggregateRating` fue removido intencionalmente por no ser verificable)
+- [ ] Confirmar que los cinco videos de YouTube (presentación y cuatro testimonios) siguen disponibles y pertenecen al programa.
+- [ ] No publicar cifras de resultados, credenciales verificadas, descuentos comparativos o urgencia sin respaldo actualizado.

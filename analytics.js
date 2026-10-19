@@ -78,15 +78,14 @@
   function initTracking() {
     // PageView + ViewContent al cargar la página de ventas del curso.
     track('PageView');
-    track('ViewContent', { content_name: 'Curso Restaura Tu Matrimonio', value: 149, currency: 'USD' });
+    track('ViewContent', { content_name: 'Curso Restaura Tu Matrimonio' });
 
-    // Clics en cualquier CTA hacia Hotmart -> CtaClick (medible por botón) + InitiateCheckout
-    // (evento estándar, se dispara justo antes de salir hacia el checkout de Hotmart).
+    // El enlace de afiliado conduce a la carta de ventas del productor, no al checkout.
+    // Solo registramos el clic de salida; Hotmart registra el inicio real de compra.
     document.querySelectorAll('a[href*="go.hotmart.com"]').forEach(function (link) {
       link.addEventListener('click', function () {
         var ctaId = link.getAttribute('data-cta-id') || 'unknown_cta';
         track('CtaClick', { content_name: ctaId });
-        track('InitiateCheckout', { content_name: 'Curso Restaura Tu Matrimonio', value: 149, currency: 'USD' });
       });
     });
   }
