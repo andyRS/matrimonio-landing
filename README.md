@@ -9,14 +9,17 @@ index.html       # Contenido y estructura de la página principal
 styles.css       # Estilos de la landing adaptable a móvil
 landing.js       # Reproducción de video bajo demanda y CTA móvil
 analytics.js     # Wrapper de tracking: Meta Pixel + GA4
+assets/          # Fotografía ilustrativa de portada y símbolo de unión
 contacto.html, privacidad.html, terminos.html
 CNAME             # Dominio custom para GitHub Pages
 sitemap.xml, robots.txt
 ```
 
-## Imágenes (Cloudflare R2)
+## Imágenes
 
-Las imágenes del sitio (mockup del curso, ebooks/bonos, fotos del autor, banner de autoridad) se sirven desde Cloudflare R2, no desde Google Drive (Drive puede cortar el hotlinking sin aviso).
+`assets/hero-couple.webp` es una imagen ilustrativa generada para esta portada; representa una conversación de pareja y no a participantes ni testimonios del programa. `assets/union-mark.svg` es el símbolo de dos aros usado en el encabezado y pie de página. Ambos se sirven desde este repositorio.
+
+Las imágenes del producto y del instructor (mockup del curso, ebooks/bonos, fotos del autor, banner de autoridad) se sirven desde Cloudflare R2, no desde Google Drive (Drive puede cortar el hotlinking sin aviso).
 
 - **Bucket**: `landingassets` (cuenta Cloudflare, prefijo `r2-upload/`)
 - **Acceso público**: Public Development URL — `https://pub-6b628a581f5c4279a17754da05badef4.r2.dev`
