@@ -14,6 +14,7 @@ class PageParser(HTMLParser):
         super().__init__()
         self.ids = []
         self.links = []
+        self.local_assets = []
         self.videos = []
         self.json_blocks = []
         self.in_json = False
@@ -24,6 +25,10 @@ class PageParser(HTMLParser):
             self.ids.append(attrs["id"])
         if tag == "a":
             self.links.append(attrs)
+        if tag in {"img", "link", "script"}:
+            asset = attrs.get("src") or attrs.get("href", "")
+            if asset.startswith("./"):
+                self.local_assets.append(asset)
         if tag == "button" and attrs.get("data-video-id"):
             self.videos.append(attrs["data-video-id"])
         if tag == "script" and attrs.get("type") == "application/ld+json":
@@ -41,6 +46,8 @@ class PageParser(HTMLParser):
 page = PageParser()
 page.feed((ROOT / "index.html").read_text(encoding="utf-8"))
 assert len(page.ids) == len(set(page.ids)), "Duplicate HTML ids"
+for asset in page.local_assets:
+    assert (ROOT / urlparse(asset).path).is_file(), f"Missing local asset: {asset}"
 assert page.videos == ["TSISdheL8D8"], "Main presentation video changed"
 assert len([link for link in page.links if "youtube.com/watch" in link.get("href", "")]) == 4
 
