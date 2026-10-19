@@ -31,9 +31,18 @@
   var mobileCta = document.querySelector('.mobile-cta');
   var hero = document.querySelector('.hero');
   if (mobileCta && hero && 'IntersectionObserver' in window) {
+    var visibleSections = new Set();
+    var priceSection = document.querySelector('.price-section');
+    var closingSection = document.querySelector('.closing-section');
     var observer = new IntersectionObserver(function (entries) {
-      mobileCta.classList.toggle('is-visible', !entries[0].isIntersecting);
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) visibleSections.add(entry.target);
+        else visibleSections.delete(entry.target);
+      });
+      mobileCta.classList.toggle('is-visible', !visibleSections.has(hero) && !visibleSections.has(priceSection) && !visibleSections.has(closingSection));
     }, { threshold: 0 });
     observer.observe(hero);
+    if (priceSection) observer.observe(priceSection);
+    if (closingSection) observer.observe(closingSection);
   }
 })();
